@@ -24,7 +24,8 @@ namespace ProductsAPI.Controllers
             _configuration = configuration;
         }
 
-        [HttpPost("register")]
+        
+        [HttpPost("Register")]
         public async Task<IActionResult> CreateUser(UserDTO model)
         {
             if(!ModelState.IsValid)
@@ -50,7 +51,7 @@ namespace ProductsAPI.Controllers
             BadRequest(result.Errors);
         }
 
-        [HttpPost("login")]
+        [HttpPost("Login")]
         public async Task<IActionResult> Login(LoginDTO model)
         {
             var user = await _userManager.FindByEmailAsync(model.Email);

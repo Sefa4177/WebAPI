@@ -7,7 +7,6 @@ using ProductsAPI.Models;
 namespace ProductsAPI.Controllers
 {
     // localhost:5000/api/products
-   
     [ApiController]
     [Route("api/[controller]")]
     public class ProductsController:ControllerBase
@@ -20,7 +19,7 @@ namespace ProductsAPI.Controllers
         }
 
         // localhost:5000/api/products => GET
-        [HttpGet]
+        [HttpGet("GetAllProducts")]
         public async Task<IActionResult> GetProducts()
         {
             var products =  await _context.Products.Where(i => i.IsActive).Select(p => ProductToDTO(p)).ToListAsync();
@@ -28,7 +27,7 @@ namespace ProductsAPI.Controllers
         }
 
         // localhost:5000/api/products/5 => GET
-        [HttpGet("{id}")]
+        [HttpGet("GetOneProduct/{id}")]
         public async Task<IActionResult> GetProduct(int? id)
         {   
             if(id == null)
@@ -47,7 +46,7 @@ namespace ProductsAPI.Controllers
         }
 
         [Authorize]
-        [HttpPost]
+        [HttpPost("CreateProduct")]
         public async Task<IActionResult> CreateProduct(Product entity)
         {
             if(entity != null && entity.ProductId != 0 && entity.ProductName != "string" && entity.Price != 0)
@@ -63,7 +62,7 @@ namespace ProductsAPI.Controllers
 
         // localhost:5000/api/products/5 => PUT
         [Authorize]
-        [HttpPut("{id}")]
+        [HttpPut("UpdateProduct/{id}")]
         public async Task<IActionResult> UpdateProduct(int id, Product entity)
         {
             if(id != entity.ProductId)
@@ -95,7 +94,7 @@ namespace ProductsAPI.Controllers
         }
 
         [Authorize]
-        [HttpDelete("{id}")]
+        [HttpDelete("DeleteProduct/{id}")]
         public async Task<IActionResult> DeleteProduct(int? id)
         {
             if(id == null)
