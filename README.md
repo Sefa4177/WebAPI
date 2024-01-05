@@ -186,7 +186,7 @@ Bu endpoint databasedeki istenilen bir ürünü göstermek için kullanılmalı.
 
 | Veri adı | Veri tipi | Zorunluluk | Açıklama                                     |
 | -------- | --------- | ---------- | -------------------------------------------- |
-|     id     |     INT      |      EVET      | Gösterilmek istenen ürünün id bilgisi |
+|          |           |            | Not : Bu bölümde parametreye ihtiyaç yoktur yalnızca url içinde istenen ürünün id'sinin gönderilmesi yeterlidir |
 
 
 **Response:**
